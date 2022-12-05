@@ -1,0 +1,20 @@
+{
+    "backdrop_path": "backdropPath",
+    "first_air_date": "first_air_date",
+    "genres": [
+        {
+            "id": 1,
+            "name": "Action"
+        }
+    ],
+    "id": 111551,
+    "name": "Name",
+    "number_of_episodes": 400,
+    "original_language": "en",
+    "original_name": "originalName",
+    "overview": "overview",
+    "popularity": 1,
+    "poster_path": "posterPath",
+    "vote_average": 1.0,
+    "vote_count": 1
+}

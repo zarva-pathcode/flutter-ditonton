@@ -1,0 +1,21 @@
+{
+    "page": 1,
+    "results": [
+        {
+            "backdrop_path": "/96MrqulbDdgWGuBwTc5RqMwm8s0.jpg",
+            "id": 51766,
+            "name": "name",
+            "original_name": "Oroginal_name",
+            "overview": "",
+            "poster_path": "/fOxLmETJcoTIDn5NiJRKyI23mK3.jpg"
+        },
+        {
+            "backdrop_path": "/8IGPB5WcZs8hT2CJI7BF7RehKEk.jpg",
+            "id": 6424,
+            "name": "Just a Minute",
+            "original_name": "Just a Minute",
+            "overview": "Just a Minute is a BBC ",
+            "poster_path": "/wy2vfWOnvYcBZP3M1NwaWBp2DD5.jpg"
+        }
+    ]
+}
