@@ -1,4 +1,5 @@
 import 'package:data_connection_checker/data_connection_checker.dart';
+import 'package:ditonton/core/common/ssl_pinning.dart';
 import 'package:ditonton/movie_fixtures/presentation/bloc/detail/movie_detail_bloc.dart';
 import 'package:ditonton/movie_fixtures/presentation/bloc/list/movie_list_bloc.dart';
 import 'package:ditonton/movie_fixtures/presentation/bloc/popular/popular_movies_bloc.dart';
@@ -162,6 +163,7 @@ void init() {
     () => MovieRepositoryImpl(
       remoteDataSource: locator(),
       localDataSource: locator(),
+      networkInfo: locator(),
     ),
   );
   locator.registerLazySingleton<TvRepository>(
@@ -189,6 +191,6 @@ void init() {
   locator.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(locator()));
 
   // external
-  locator.registerLazySingleton(() => http.Client());
+  locator.registerLazySingleton(() => SSLPinning.client);
   locator.registerLazySingleton(() => DataConnectionChecker());
 }

@@ -53,6 +53,18 @@ class DatabaseHelper {
     ''');
   }
 
+  Future<void> insertCacheTransaction(
+      List<MovieTable> movies, String category) async {
+    final db = await database;
+    db!.transaction((txn) async {
+      for (final movie in movies) {
+        final movieJson = movie.toJson();
+        movieJson['category'] = category;
+        txn.insert(_tblCache, movieJson);
+      }
+    });
+  }
+
   // Movie
   Future<int> insertMovieWatchlist(MovieTable movie) async {
     final db = await database;
@@ -124,6 +136,17 @@ class DatabaseHelper {
   Future<List<Map<String, dynamic>>> getWatchlistTvs() async {
     final db = await database;
     final List<Map<String, dynamic>> results = await db!.query(_tblTvWatchlist);
+
+    return results;
+  }
+
+  Future<List<Map<String, dynamic>>> getCacheMovies(String category) async {
+    final db = await database;
+    final List<Map<String, dynamic>> results = await db!.query(
+      _tblCache,
+      where: 'category = ?',
+      whereArgs: [category],
+    );
 
     return results;
   }
