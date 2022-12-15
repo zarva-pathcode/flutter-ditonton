@@ -41,10 +41,12 @@ class _TopRatedTvsPageState extends State<TopRatedTvsPage> {
                 },
                 itemCount: state.tvs.length,
               );
-            } else {
+            } else if (state is TopRatedTvsHasError) {
               return Center(
-                child: Text("Failed"),
+                child: Text(state.message),
               );
+            } else {
+              return Container();
             }
           },
         ),

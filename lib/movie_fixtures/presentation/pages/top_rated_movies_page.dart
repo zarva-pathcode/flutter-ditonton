@@ -40,10 +40,12 @@ class _TopRatedMoviesPageState extends State<TopRatedMoviesPage> {
               },
               itemCount: state.movies.length,
             );
-          } else {
+          } else if (state is TopRatedMoviesHasError) {
             return Center(
-              child: Text("Failed"),
+              child: Text(state.message),
             );
+          } else {
+            return Container();
           }
         }),
       ),

@@ -27,25 +27,28 @@ class _PopularMoviesPageState extends State<PopularMoviesPage> {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: BlocBuilder<PopularMoviesBloc, PopularMoviesState>(
-            builder: (context, state) {
-          if (state is PopularMoviesLoading) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          } else if (state is PopularMoviesHasData) {
-            return ListView.builder(
-              itemBuilder: (context, index) {
-                final movie = state.movies[index];
-                return MovieCard(movie);
-              },
-              itemCount: state.movies.length,
-            );
-          } else {
-            return Center(
-              child: Text("Failed"),
-            );
-          }
-        }),
+          builder: (context, state) {
+            if (state is PopularMoviesLoading) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (state is PopularMoviesHasData) {
+              return ListView.builder(
+                itemBuilder: (context, index) {
+                  final movie = state.movies[index];
+                  return MovieCard(movie);
+                },
+                itemCount: state.movies.length,
+              );
+            } else if (state is PopularMoviesHasError) {
+              return Center(
+                child: Text(state.message),
+              );
+            } else {
+              return Container();
+            }
+          },
+        ),
       ),
     );
   }

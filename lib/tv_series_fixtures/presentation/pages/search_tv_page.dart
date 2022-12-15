@@ -43,11 +43,13 @@ class SearchTvPage extends StatelessWidget {
                   );
                 } else if (state is SearchHasData) {
                   final result = state.result;
-                  return Expanded(child: ListView.builder(
+                  return Expanded(
+                      child: ListView.builder(
                     itemBuilder: (context, index) {
                       final tv = result[index];
                       return TvCard(tv);
                     },
+                    itemCount: result.length,
                   ));
                 } else if (state is SearchError) {
                   return Expanded(

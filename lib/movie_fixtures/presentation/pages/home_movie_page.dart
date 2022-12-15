@@ -105,10 +105,12 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                   );
                 } else if (state is NowPlayingMovieListHasData) {
                   return MovieList(state.movies);
-                } else {
+                } else if (state is NowPlayingMovieListError) {
                   return Center(
-                    child: Text("Failed"),
+                    child: Text(state.message),
                   );
+                } else {
+                  return Container();
                 }
               }),
               _buildSubHeading(
@@ -124,10 +126,12 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                     );
                   } else if (state is PopularMovieListHasData) {
                     return MovieList(state.movies);
-                  } else {
+                  } else if (state is PopularMovieListError) {
                     return Center(
-                      child: Text("Failed"),
+                      child: Text(state.message),
                     );
+                  } else {
+                    return Container();
                   }
                 },
               ),
@@ -144,10 +148,12 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                   );
                 } else if (state is TopRatedMovieListHasData) {
                   return MovieList(state.movies);
-                } else {
+                } else if (state is TopRatedMovieListError) {
                   return Center(
-                    child: Text("Failed"),
+                    child: Text(state.message),
                   );
+                } else {
+                  return Container();
                 }
               }),
             ],

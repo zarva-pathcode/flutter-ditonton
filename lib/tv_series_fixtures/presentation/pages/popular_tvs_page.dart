@@ -41,10 +41,12 @@ class _PopularTvsPageState extends State<PopularTvsPage> {
                 },
                 itemCount: state.tvs.length,
               );
-            } else {
+            } else if (state is PopularTvsHasError) {
               return Center(
-                child: Text("Failed"),
+                child: Text(state.message),
               );
+            } else {
+              return Container();
             }
           },
         ),

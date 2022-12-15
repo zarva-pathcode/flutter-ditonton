@@ -23,7 +23,7 @@ class _NowPlayingTvsPageState extends State<NowPlayingTvsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Now PLaying Tv Series'),
+        title: Text('Now Playing Tv Series'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -41,10 +41,12 @@ class _NowPlayingTvsPageState extends State<NowPlayingTvsPage> {
                 },
                 itemCount: state.tvs.length,
               );
-            } else {
+            } else if (state is NowPlayingTvsHasError) {
               return Center(
-                child: Text("Failed"),
+                child: Text(state.message),
               );
+            } else {
+              return Container();
             }
           },
         ),

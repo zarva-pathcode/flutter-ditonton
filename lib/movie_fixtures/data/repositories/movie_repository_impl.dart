@@ -33,6 +33,8 @@ class MovieRepositoryImpl implements MovieRepository {
         return Left(ServerFailure(''));
       } on SocketException {
         return Left(ConnectionFailure('Failed to connect to the network'));
+      } on TlsException catch (e) {
+        return Left(SSLFailure('CERTIFICATE VERIFY FAILED \n${e.message}'));
       }
     } else {
       try {
@@ -53,6 +55,8 @@ class MovieRepositoryImpl implements MovieRepository {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException catch (e) {
+      return Left(SSLFailure('CERTIFICATE VERIFY FAILED \n${e.message}'));
     }
   }
 
@@ -65,6 +69,8 @@ class MovieRepositoryImpl implements MovieRepository {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException catch (e) {
+      return Left(SSLFailure('CERTIFICATE VERIFY FAILED \n${e.message}'));
     }
   }
 
@@ -77,6 +83,8 @@ class MovieRepositoryImpl implements MovieRepository {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException catch (e) {
+      return Left(SSLFailure('CERTIFICATE VERIFY FAILED \n${e.message}'));
     }
   }
 
@@ -89,6 +97,8 @@ class MovieRepositoryImpl implements MovieRepository {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException catch (e) {
+      return Left(SSLFailure('CERTIFICATE VERIFY FAILED \n${e.message}'));
     }
   }
 
@@ -101,6 +111,8 @@ class MovieRepositoryImpl implements MovieRepository {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException catch (e) {
+      return Left(SSLFailure('CERTIFICATE VERIFY FAILED \n${e.message}'));
     }
   }
 

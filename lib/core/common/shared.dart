@@ -10,7 +10,7 @@ class Shared {
     SecurityContext context = SecurityContext();
     try {
       List<int> bytes = [];
-      bytes = (await rootBundle.load('certificate/certificate.crt'))
+      bytes = (await rootBundle.load('certificate/certificates.crt'))
           .buffer
           .asUint8List();
       context.setTrustedCertificatesBytes(bytes);
@@ -29,7 +29,7 @@ class Shared {
     }
     HttpClient httpClient = HttpClient(context: context);
     httpClient.badCertificateCallback =
-        (X509Certificate cert, String host, int port) => true;
+        (X509Certificate cert, String host, int port) => false;
 
     return httpClient;
   }

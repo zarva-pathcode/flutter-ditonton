@@ -53,10 +53,12 @@ class SearchMoviePage extends StatelessWidget {
                       itemCount: result.length,
                     ),
                   );
-                } else {
-                  return Expanded(
-                    child: Container(),
+                } else if (state is SearchError) {
+                  return Center(
+                    child: Text(state.message),
                   );
+                } else {
+                  return Container();
                 }
               },
             ),

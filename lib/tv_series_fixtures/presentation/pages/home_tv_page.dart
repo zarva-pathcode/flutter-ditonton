@@ -107,10 +107,12 @@ class _HomeTvPageState extends State<HomeTvPage> {
                     return Center(
                       child: CircularProgressIndicator(),
                     );
-                  } else if (state is NowPlayingTvListHasData) {
-                    return TvList(state.tvs);
+                  } else if (state is NowPlayingTvListError) {
+                    return Center(
+                      child: Text(state.message),
+                    );
                   } else {
-                    return Text('Failed');
+                    return Container();
                   }
                 },
               ),
@@ -127,10 +129,12 @@ class _HomeTvPageState extends State<HomeTvPage> {
                     );
                   } else if (state is PopularTvListHasData) {
                     return TvList(state.tvs);
-                  } else {
+                  } else if (state is PopularTvListError) {
                     return Center(
-                      child: Text('Failed'),
+                      child: Text(state.message),
                     );
+                  } else {
+                    return Container();
                   }
                 },
               ),
@@ -147,8 +151,12 @@ class _HomeTvPageState extends State<HomeTvPage> {
                     );
                   } else if (state is TopRatedTvListHasData) {
                     return TvList(state.tvs);
+                  } else if (state is TopRatedTvListError) {
+                    return Center(
+                      child: Text(state.message),
+                    );
                   } else {
-                    return Text('Failed');
+                    return Container();
                   }
                 },
               )

@@ -22,23 +22,14 @@ class TvRepositoryImpl implements TvRepository {
 
   @override
   Future<Either<Failure, List<Tv>>> getNowPlayingTvs() async {
-    // if (await networkInfo.isConnected) {
     try {
       final result = await remoteDataSource.getNowPlayingTvs();
-      // localDataSource.cacheNowPlayingTvs(
-      //     result.map((tv) => TvTable.fromDTO(tv)).toList());
       return Right(result.map((model) => model.toEntity()).toList());
     } on ServerException {
       return Left(ServerFailure(''));
+    } on TlsException catch (e) {
+      return Left(SSLFailure('CERTIFICATE VERIFY FAILED \n${e.message}'));
     }
-    // } else {
-    //   try {
-    //     final result = await localDataSource.getCachedNowPlayingTvs();
-    //     return Right(result.map((model) => model.toEntity()).toList());
-    //   } on CacheException catch (e) {
-    //     return Left(CacheFailure(e.message));
-    //   }
-    // }
   }
 
   @override
@@ -50,6 +41,8 @@ class TvRepositoryImpl implements TvRepository {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException catch (e) {
+      return Left(SSLFailure('CERTIFICATE VERIFY FAILED \n${e.message}'));
     }
   }
 
@@ -62,6 +55,8 @@ class TvRepositoryImpl implements TvRepository {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException catch (e) {
+      return Left(SSLFailure('CERTIFICATE VERIFY FAILED \n${e.message}'));
     }
   }
 
@@ -74,6 +69,8 @@ class TvRepositoryImpl implements TvRepository {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException catch (e) {
+      return Left(SSLFailure('CERTIFICATE VERIFY FAILED \n${e.message}'));
     }
   }
 
@@ -86,6 +83,8 @@ class TvRepositoryImpl implements TvRepository {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException catch (e) {
+      return Left(SSLFailure('CERTIFICATE VERIFY FAILED \n${e.message}'));
     }
   }
 
@@ -98,6 +97,8 @@ class TvRepositoryImpl implements TvRepository {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException catch (e) {
+      return Left(SSLFailure('CERTIFICATE VERIFY FAILED \n${e.message}'));
     }
   }
 
