@@ -107,6 +107,8 @@ class _HomeTvPageState extends State<HomeTvPage> {
                     return Center(
                       child: CircularProgressIndicator(),
                     );
+                  } else if (state is NowPlayingTvListHasData) {
+                    return TvList(state.tvs);
                   } else if (state is NowPlayingTvListError) {
                     return Center(
                       child: Text(state.message),
